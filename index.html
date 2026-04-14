@@ -659,6 +659,54 @@
                 height: 54px;
             }
         }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .page {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .sheet {
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+            }
+
+            .company-card {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            input {
+                border: none;
+                background: transparent;
+                pointer-events: none;
+            }
+
+            .company-stamp-box {
+                box-shadow: none;
+            }
+        }
+
+        .print-row td {
+            background: #fff;
+            text-align: center;
+            padding: 10px 0 4px;
+            border-top: none;
+        }
+
+        .print-guide {
+            font-size: 12px;
+            color: #8A94A6;
+            font-weight: 600;
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -759,6 +807,12 @@
                                 <span class="final-label">합계</span>
                                 <span id="final">0원</span>
                             </div>
+                        </td>
+                    </tr>
+
+                    <tr class="print-row">
+                        <td colspan="3">
+                            <p class="print-guide">PC: Ctrl + P / 모바일: 공유 → 인쇄</p>
                         </td>
                     </tr>
                 </tbody>
