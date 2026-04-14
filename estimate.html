@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HH WORKS 광고 견적서</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-deep: #0F172A;
+            --toss-blue: #3182F6;
+            --toss-blue-dark: #1B64DA;
+            --toss-blue-soft: #EEF5FF;
+            --line: #DCE6F2;
+            --line-soft: #E9EEF5;
+            --white: #FFFFFF;
+            --muted: #6B7280;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Pretendard", Arial, sans-serif;
+            color: var(--navy-deep);
+            background: #FFFFFF;
+        }
+
+        .page {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 36px 18px 56px;
+        }
+
+        .sheet {
+            position: relative;
+            background: #fff;
+            border-radius: 30px;
+            padding: 34px 34px 38px;
+            box-shadow:
+                0 24px 60px rgba(15, 23, 42, 0.08),
+                0 8px 20px rgba(15, 23, 42, 0.04);
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        .sheet::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--navy-deep) 0%, var(--toss-blue) 100%);
+        }
+
+        .doc-label {
+            display: inline-flex;
+            align-items: center;
+            height: 34px;
+            padding: 0 16px;
+            border-radius: 999px;
+            background: var(--toss-blue-soft);
+            color: var(--toss-blue-dark);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+        }
+
+        .doc-title {
+            margin: 0;
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+            color: var(--navy-deep);
+        }
+
+        .doc-sub {
+            margin: 12px 0 0;
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .company-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 20px;
+            margin: 34px 0 30px;
+        }
+
+        .company-info,
+        .summary-info {
+            position: relative;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 26px 24px;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
+        }
+
+        .company-name {
+            margin: 0 0 20px;
+            font-size: 34px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            font-weight: 900;
+            color: var(--navy-deep);
+        }
+
+        .company-row {
+            position: relative;
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 8px;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .company-row:last-child {
+            border-bottom: none;
+            padding-right: 112px;
+        }
+
+        .company-row span:first-child {
+            color: #556070;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .company-row span:last-child {
+            text-align: right;
+            color: var(--navy-deep);
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .company-row--name span:last-child,
+        .company-row--biz span:last-child {
+            font-size: 16px;
+        }
+
+        .company-row--ceo span:last-child {
+            font-size: 20px;
+        }
+
+        .stamp-row {
+            position: relative;
+        }
+
+        .stamp-box {
+            position: absolute;
+            right: 18px;
+            top: 18px;
+            width: 58px;
+            height: 58px;
+            border: 1px solid #E5EAF3;
+            border-radius: 10px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .stamp-box img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            opacity: 0.84;
+            display: block;
+        }
+
+        .summary-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100%;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFF 100%);
+        }
+
+        .summary-info__title {
+            margin: 0 0 12px;
+            font-size: 34px;
+            line-height: 1.16;
+            letter-spacing: -0.035em;
+            font-weight: 900;
+            color: var(--navy-deep);
+        }
+
+        .summary-info__desc {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid var(--line);
+            background: #fff;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+        }
+
+        thead th {
+            background: var(--toss-blue);
+            color: #fff;
+            padding: 18px 18px;
+            font-size: 15px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: -0.01em;
+            border-right: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        thead th:first-child {
+            border-top-left-radius: 24px;
+        }
+
+        thead th:last-child {
+            border-top-right-radius: 24px;
+            border-right: none;
+        }
+
+        tbody td {
+            padding: 18px 18px;
+            font-size: 16px;
+            border-top: 1px solid var(--line-soft);
+            border-right: 1px solid var(--line-soft);
+            vertical-align: middle;
+            background: #fff;
+            color: var(--navy-deep);
+        }
+
+        tbody tr:first-child td {
+            border-top: none;
+        }
+
+        tbody td:last-child {
+            border-right: none;
+        }
+
+        tbody tr:nth-child(even):not(.vat-row):not(.final-row) td {
+            background: #FBFCFE;
+        }
+
+        tbody td:first-child {
+            width: 19%;
+            font-weight: 800;
+            color: var(--navy-deep);
+        }
+
+        tbody td:nth-child(2) {
+            width: 36%;
+            color: #495466;
+            font-weight: 600;
+        }
+
+        td.amount {
+            width: 45%;
+            text-align: right;
+            background: inherit;
+        }
+
+        input {
+            width: 100%;
+            height: 54px;
+            border-radius: 14px;
+            border: 1px solid #D6DFEB;
+            text-align: right;
+            padding: 0 16px;
+            background: #fff;
+            font: inherit;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--navy-deep);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        input:hover {
+            border-color: #BFD0E6;
+            background: #FCFDFF;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--toss-blue);
+            box-shadow: 0 0 0 4px rgba(49, 130, 246, 0.14);
+            background: #fff;
+        }
+
+        .vat-row td {
+            background: #fff;
+            color: var(--navy-deep);
+            font-weight: 700;
+        }
+
+        .vat-row td:first-child {
+            color: var(--navy-deep);
+        }
+
+        .vat-row td:nth-child(2) {
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        #vat {
+            text-align: right;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--navy-deep);
+            background: #fff;
+        }
+
+        .final-row td {
+            background: #fff;
+            text-align: center;
+            border-top: 1px solid var(--line-soft);
+            padding: 24px 18px 28px;
+        }
+
+        .final-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .final-label {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--navy-deep);
+        }
+
+        #final {
+            font-size: 44px;
+            font-weight: 900;
+            color: var(--toss-blue);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        @media (max-width: 1080px) {
+            .doc-title {
+                font-size: 44px;
+            }
+
+            .summary-info__title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .page {
+                padding: 20px 12px 36px;
+            }
+
+            .sheet {
+                padding: 24px 18px 22px;
+                border-radius: 22px;
+            }
+
+            .doc-label {
+                height: 30px;
+                padding: 0 12px;
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+
+            .doc-title {
+                font-size: 34px;
+            }
+
+            .doc-sub {
+                font-size: 15px;
+                margin-top: 8px;
+            }
+
+            .company-card {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                margin: 24px 0 20px;
+            }
+
+            .company-info,
+            .summary-info {
+                border-radius: 18px;
+                padding: 20px 16px 18px;
+            }
+
+            .company-name {
+                font-size: 28px;
+                margin-bottom: 14px;
+            }
+
+            .company-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+                padding: 12px 0;
+            }
+
+            .company-row:last-child {
+                border-bottom: none;
+                padding-right: 96px;
+            }
+
+            .company-row span:first-child {
+                font-size: 13px;
+            }
+
+            .company-row span:last-child {
+                text-align: left;
+                font-size: 17px;
+            }
+
+            .stamp-box {
+                right: 8px;
+                width: 56px;
+                height: 56px;
+            }
+
+            .stamp-box img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .summary-info__title {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+
+            .summary-info__desc {
+                font-size: 14px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                border-radius: 18px;
+            }
+
+            thead th,
+            tbody td {
+                padding: 14px 12px;
+                font-size: 14px;
+            }
+
+            input {
+                height: 46px;
+                font-size: 15px;
+                min-width: 180px;
+            }
+
+            #vat {
+                font-size: 18px;
+            }
+
+            #final {
+                font-size: 28px;
+            }
+
+            .final-label {
+                font-size: 18px;
+            }
+        }
+
+        .company-info {
+            position: relative;
+        }
+
+        .company-row--ceo,
+        .company-row--name {
+            padding-right: 110px;
+        }
+
+        .company-stamp {
+            position: absolute;
+            right: 28px;
+            bottom: 18px;
+            width: 62px;
+            height: 62px;
+            border: 1px solid #E5EAF3;
+            border-radius: 10px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-stamp img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            opacity: 0.86;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="sheet">
+
+            <div class="doc-label">HH WORKS ESTIMATE</div>
+            <h1 class="doc-title">광고 견적서</h1>
+            <p class="doc-sub">채널별 광고 집행 비용을 정리한 견적서입니다.</p>
+
+            <div class="company-card">
+                <div class="company-info">
+                    <div class="company-name">HH WORKS</div>
+
+                    <div class="company-row company-row--biz">
+                        <span>사업자등록번호</span>
+                        <span>443-86-03585</span>
+                    </div>
+
+                    <div class="company-row company-row--ceo">
+                        <span>대표자</span>
+                        <span>전지영</span>
+                    </div>
+                    <div class="company-row company-row--name">
+                        <span>연락처</span>
+                        <span>010-3040-7778</span>
+                    </div>
+                    <div class="company-stamp">
+                        <img src="img/stamp.png" alt="HH WORKS 도장" />
+                    </div>
+                </div>
+
+                <div class="summary-info">
+                    <div class="summary-info__title">
+                        채널별 광고 집행 비용을<br>한눈에 확인할 수 있습니다.
+                    </div>
+                    <div class="summary-info__desc">
+                        금액 입력 시 자동 계산됩니다.
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th>상세</th>
+                        <th>금액</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>메타</td>
+                        <td>페이스북 / 인스타그램</td>
+                        <td class="amount"><input class="price-input" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>유튜브</td>
+                        <td>영상 광고 + 인피드</td>
+                        <td class="amount"><input class="price-input" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>네이버</td>
+                        <td>배너 4주 90만회</td>
+                        <td class="amount">
+                            <input class="price-input" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>광고 세팅</td>
+                        <td>픽셀 / 전환 추적</td>
+                        <td class="amount"><input class="price-input" /></td>
+                    </tr>
+
+                    <tr class="vat-row">
+                        <td>부가세 (10%)</td>
+                        <td id="vat">0원</td>
+                    </tr>
+
+                    <tr class="final-row">
+                        <td colspan="3">
+                            <div class="final-center">
+                                <span class="final-label">합계</span>
+                                <span id="final">0원</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <script>
+        const inputs = document.querySelectorAll(".price-input");
+        const vatEl = document.getElementById("vat");
+        const finalEl = document.getElementById("final");
+
+        function format(n) {
+            return n.toLocaleString("ko-KR") + "원";
+        }
+
+        function calc() {
+            let total = 0;
+
+            inputs.forEach((input) => {
+                const raw = input.value.replace(/,/g, "");
+                const value = parseInt(raw, 10) || 0;
+                total += value;
+            });
+
+            const vat = Math.round(total * 0.1);
+            const final = total + vat;
+
+            vatEl.textContent = format(vat);
+            finalEl.textContent = format(final);
+        }
+
+        inputs.forEach((input) => {
+            input.addEventListener("input", (e) => {
+                let value = e.target.value.replace(/[^0-9]/g, "");
+                e.target.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                calc();
+            });
+        });
+
+        calc();
+    </script>
+</body>
+
+</html>
