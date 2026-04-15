@@ -225,6 +225,8 @@
 
         tbody td:first-child {
             font-weight: 600;
+            padding-left: 32px;
+            letter-spacing: -0.01em;
         }
 
         tbody td:nth-child(2) {
@@ -329,6 +331,12 @@
         .company-row--ceo,
         .company-row--name {
             padding-right: 110px;
+        }
+
+        @media (min-width: 900px) {
+            tbody td:first-child {
+                padding-left: 48px;
+            }
         }
 
 
@@ -525,21 +533,6 @@
                 padding-right: 62px;
             }
 
-            .company-stamp-box {
-                position: absolute;
-                right: 6px;
-                top: 50%;
-                transform: translateY(-8%);
-                width: 78px;
-                height: 78px;
-                border-radius: 12px;
-            }
-
-            .company-stamp-box img {
-                width: 58px;
-                height: 58px;
-            }
-
             .summary-info__title {
                 font-size: 20px;
                 line-height: 1.3;
@@ -555,8 +548,12 @@
                 font-size: 12px;
             }
 
-            tbody td:first-child {
-                width: 22%;
+            @media (max-width: 640px) {
+                tbody td:first-child {
+                    width: 22%;
+                    padding-left: 20px;
+                    /* ← 모바일 여백 증가 */
+                }
             }
 
             tbody td:nth-child(2) {
