@@ -129,7 +129,6 @@
         .company-row span:first-child {
             font-weight: 500;
             color: #7A8699;
-            /* 살짝 더 흐리게 */
         }
 
         .company-row span:last-child {
@@ -296,7 +295,6 @@
 
         .final-row td {
             background: #F7FAFF;
-            /* ← 합계만 음영 */
             text-align: center;
             border-top: 1px solid var(--line-soft);
             padding: 24px 18px 28px;
@@ -333,13 +331,40 @@
             padding-right: 110px;
         }
 
+        .anchor-row {
+            position: relative;
+        }
+
+        /* 기본(PC/태블릿) 도장 */
+        .company-stamp-box {
+            position: absolute;
+            right: -18px;
+            top: 100%;
+            transform: translateY(8%);
+
+            width: 108px;
+            height: 108px;
+
+            border: 1px solid #E5EAF3;
+            border-radius: 16px;
+            background: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-stamp-box img {
+            width: 88px;
+            height: 88px;
+            object-fit: contain;
+        }
+
         @media (min-width: 900px) {
             tbody td:first-child {
                 padding-left: 48px;
             }
         }
-
-
 
         @media (max-width: 1080px) {
             .doc-title {
@@ -420,8 +445,6 @@
                 padding-right: 78px;
             }
 
-
-
             .summary-info__title {
                 font-size: 24px;
                 margin-bottom: 8px;
@@ -472,18 +495,6 @@
             }
         }
 
-        .company-stamp-box {
-            right: 14px;
-            top: 78px;
-            width: 64px;
-            height: 64px;
-        }
-
-        .company-stamp-box img {
-            width: 44px;
-            height: 44px;
-        }
-
         @media (max-width: 640px) {
             .page {
                 padding: 12px 8px 20px;
@@ -501,6 +512,20 @@
             .doc-sub {
                 font-size: 13px;
                 line-height: 1.5;
+            }
+
+            .company-stamp-box {
+                right: 12px;
+                top: 92px;
+                transform: none;
+
+                width: 72px;
+                height: 72px;
+            }
+
+            .company-stamp-box img {
+                width: 58px;
+                height: 58px;
             }
 
             .company-info,
@@ -548,12 +573,9 @@
                 font-size: 12px;
             }
 
-            @media (max-width: 640px) {
-                tbody td:first-child {
-                    width: 22%;
-                    padding-left: 20px;
-                    /* ← 모바일 여백 증가 */
-                }
+            tbody td:first-child {
+                width: 22%;
+                padding-left: 20px;
             }
 
             tbody td:nth-child(2) {
@@ -592,60 +614,26 @@
             #final {
                 font-size: 24px;
             }
-        }
 
-        .company-info {
-            position: relative;
-        }
-
-
-
-        .anchor-row {
-            position: relative;
-        }
-
-        .company-stamp-box {
-            position: absolute;
-            right: -18px;
-            top: 100%;
-            transform: translateY(8%);
-
-            width: 108px;
-            height: 108px;
-
-            border: 1px solid #E5EAF3;
-            border-radius: 16px;
-            background: #fff;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .company-stamp-box img {
-            width: 88px;
-            height: 88px;
-            object-fit: contain;
-        }
-
-        @media (max-width: 640px) {
+            /* 모바일 도장 */
             .anchor-row {
-                position: static;
+                position: relative;
             }
 
             .company-stamp-box {
                 position: absolute;
-                right: 10px;
-                top: 108px;
-                transform: none;
-                width: 74px;
-                height: 74px;
+                right: -14px;
+                top: 100%;
+                transform: translateY(6%);
+
+                width: 72px;
+                height: 72px;
                 border-radius: 12px;
             }
 
             .company-stamp-box img {
-                width: 60px;
-                height: 60px;
+                width: 58px;
+                height: 58px;
             }
         }
 
@@ -679,6 +667,10 @@
             }
 
             .company-stamp-box {
+                position: absolute;
+                right: 24px;
+                top: 70px;
+                transform: none;
                 box-shadow: none;
             }
         }
@@ -754,7 +746,7 @@
                 <tbody>
                     <tr>
                         <td>메타</td>
-                        <td>페이스북 / 인스타그램/ 인피드</td>
+                        <td>페이스북 / 인스타그램 / 인피드</td>
                         <td class="amount"><input class="price-input" inputmode="numeric" /></td>
                     </tr>
 
@@ -772,9 +764,10 @@
 
                     <tr>
                         <td>광고 세팅</td>
-                        <td>랜딩/ 픽셀 / 전환 추적</td>
+                        <td>랜딩 / 픽셀 / 전환 추적</td>
                         <td class="amount"><input class="price-input" inputmode="numeric" /></td>
                     </tr>
+
                     <tr>
                         <td>&nbsp;</td>
                         <td></td>
