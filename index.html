@@ -552,6 +552,29 @@
             padding-right: 22px;
         }
 
+        .account-row td {
+            padding: 16px 18px;
+            background: #F4F8FF;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy-deep);
+            border-top: 1px solid var(--line-soft);
+            line-height: 1.4;
+            word-break: keep-all;
+        }
+
+        .account-row strong {
+            color: #1B64DA;
+            font-weight: 800;
+            margin-right: 6px;
+        }
+
+        .account-row td {
+            font-size: 13px;
+            padding: 14px 12px;
+        }
+
+
         @media print {
 
             @page {
@@ -748,6 +771,12 @@
             .print-row {
                 display: none !important;
             }
+
+            .account-row td {
+                padding: 10px 12px !important;
+                font-size: 12px !important;
+                background: #F8FBFF !important;
+            }
         }
     </style>
 </head>
@@ -856,6 +885,12 @@
                                 <span class="final-label">합계</span>
                                 <span id="final">0원</span>
                             </div>
+                        </td>
+                    </tr>
+                    <tr class="account-row">
+                        <td colspan="3">
+                            <strong>입금계좌</strong> : 국민은행 123-456-789012
+                            <span>투에이치웍스</span>
                         </td>
                     </tr>
 
