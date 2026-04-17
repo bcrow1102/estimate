@@ -557,46 +557,138 @@
             html,
             body {
                 background: #fff;
+                height: auto;
             }
 
             .page {
                 max-width: 100%;
-                padding: 0;
-                margin: 0;
+                padding: 0 !important;
+                margin: 0 !important;
             }
 
             .sheet {
                 box-shadow: none;
                 border: none;
-                padding: 0;
+                padding: 18px 18px 12px !important;
+                border-radius: 0;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
-            input {
-                border: none;
-                background: transparent;
-                box-shadow: none;
+            .doc-label {
+                margin-bottom: 6px;
+            }
+
+            .doc-title {
+                font-size: 34px;
+                margin-bottom: 0;
+            }
+
+            .doc-sub {
+                margin-top: 6px;
+                margin-bottom: 0;
+                font-size: 13px;
+            }
+
+            .company-card {
+                margin-top: 18px;
+                gap: 14px;
+            }
+
+            .company-info,
+            .summary-info {
+                padding: 16px;
+            }
+
+            .company-name {
+                margin-bottom: 10px;
+                font-size: 24px;
+            }
+
+            .company-row {
+                padding: 8px 0;
             }
 
             .company-row--stamp {
-                grid-template-columns: 150px 1fr 120px;
-                min-height: 120px;
+                grid-template-columns: 150px 1fr 110px;
+                min-height: 110px;
+            }
+
+            .company-row--stamp>span:first-child,
+            .company-row--stamp>span:nth-child(2) {
+                min-height: 110px;
+                padding: 10px 0;
             }
 
             .stamp-inline {
-                width: 120px;
-                height: 120px;
+                width: 110px;
+                height: 110px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
 
             .stamp-inline img {
-                width: 90px;
-                height: 90px;
+                width: 82px;
+                height: 82px;
                 object-fit: contain;
             }
 
+            table {
+                margin-top: 14px !important;
+            }
 
+            thead th {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            tbody td {
+                padding: 12px 12px;
+                font-size: 13px;
+            }
+
+            tbody td:nth-child(1) {
+                padding-left: 16px;
+            }
+
+            tbody td:nth-child(2) {
+                padding-left: 16px;
+            }
+
+            tbody td:nth-child(3) {
+                padding-right: 10px;
+            }
+
+            input {
+                border: none;
+                background: transparent;
+                box-shadow: none;
+                height: 32px;
+                padding: 0;
+                font-size: 13px;
+            }
+
+            .vat-row td {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+
+            .final-row td {
+                padding: 14px 10px 16px !important;
+            }
+
+            #final {
+                font-size: 32px;
+            }
+
+            .print-row td {
+                padding-top: 8px !important;
+            }
+
+            .print-guide {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
